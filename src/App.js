@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useContext, useEffect, useState } from "react";
+import "./App.css";
+import { AppContext } from "./AppContext";
+import { Home } from "./Components/Home";
+import { Game } from "./Components/Game";
 function App() {
+  const [playing, setPlaying] = useState(false);
+  const [appContext, setAppContext] = useState({
+    category: null,
+    categoryId: null,
+    difficulty: null,
+  });
+
+  const setPlayingTrue = () => {
+    setPlaying(true);
+  };
+
+  const setPlayingFalse = () => {
+    setPlaying(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={{ appContext, setAppContext }}>
+      <div className="App">
+        {playing ? <Game setPlayingFalse={setPlayingFalse} /> : <Home setPlayingTrue={setPlayingTrue}/>}
+      </div>
+    </AppContext.Provider>
   );
 }
 
