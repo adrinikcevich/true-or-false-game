@@ -2,7 +2,7 @@
   "name": "quiz-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://adrinikcevich.github.io/true-or-false-.game",
+  "homepage": "https://adrinikcevich.github.io/true-or-false-game/",
   "dependencies": {
     "@iconify/react": "^3.1.4",
     "@testing-library/jest-dom": "^5.16.2",
