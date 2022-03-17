@@ -1,15 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import { AppContext } from "./AppContext";
 import { Home } from "./Components/Home";
 import { Game } from "./Components/Game";
+import { Footer } from "./Components/Footer";
+
 function App() {
   const [playing, setPlaying] = useState(false);
-  const [appContext, setAppContext] = useState({
-    category: null,
-    categoryId: null,
-    difficulty: null,
-  });
 
   const setPlayingTrue = () => {
     setPlaying(true);
@@ -20,11 +16,16 @@ function App() {
   };
 
   return (
-    <AppContext.Provider value={{ appContext, setAppContext }}>
+    <>
       <div className="App">
-        {playing ? <Game setPlayingFalse={setPlayingFalse} /> : <Home setPlayingTrue={setPlayingTrue}/>}
+        {playing ? (
+          <Game setPlayingFalse={setPlayingFalse} />
+        ) : (
+          <Home setPlayingTrue={setPlayingTrue} />
+        )}
       </div>
-    </AppContext.Provider>
+      <Footer />
+    </>
   );
 }
 
